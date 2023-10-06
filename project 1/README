@@ -1,8 +1,8 @@
-Programming Project Part 1 CS 219 - Computer Organization Spring 2023
+Programming Project Part 1 CS 219 - Computer Organization Fall 2023
 
-This program adds 2 hexadecimal numbers supplied by an input file and displays the sum.
+This program adds 2 unsigned hexadecimal numbers supplied by an input file and displays the sum.
 The input file will be formatted: "ADD <number1> <number2>" both numbers being in hexadecimal format.
 If there is no overflow then the output is correct. If however there is overflow, the output will be incorrect.
 
-Instructions: Run `make` to build the binary. Supply a file titled "input.txt" in the same directory as the executable.
+Instructions: Run `make` to build the binary.
 Run the program output executable in terminal.

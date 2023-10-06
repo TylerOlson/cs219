@@ -1,2 +1,2 @@
 # cs219
-UNR CS219 Spring 2023
+UNR CS219 ~~Spring~~ Fall 2023

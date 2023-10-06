@@ -5,7 +5,6 @@ LFLAGS = -Wall -Wextra -pedantic
 
 all:
 	${CC} ${DEBUG} ${LFLAGS} main.cpp -o project1
-	make clean
 
 clean:
 	rm -f *.o
