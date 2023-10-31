@@ -31,11 +31,12 @@ int main() {
         } else if(lineArr[0] == "AND" || lineArr[0] == "ANDS") {
             output = first & second;
         } else if(lineArr[0] == "ASR" || lineArr[0] == "ASRS") {
-            output = (int)first >> 1;
+            int32_t signedNum = std::stoul(lineArr[1], nullptr, 16);
+            output = signedNum >> second;
         } else if(lineArr[0] == "LSR" || lineArr[0] == "LSRS") {
-            output = first >> 1;
+            output = first >> second;
         } else if(lineArr[0] == "LSL" || lineArr[0] == "LSLS") {
-            output = first << 1;
+            output = first << second;
         } else if(lineArr[0] == "NOT" || lineArr[0] == "NOTS") {
             output = ~first;
         } else if(lineArr[0] == "ORR" || lineArr[0] == "ORRS") {
