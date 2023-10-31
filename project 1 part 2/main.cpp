@@ -3,27 +3,13 @@
 #include <fstream>
 #include <sstream>
 
-class Simulator {
-public:
-    void run(const std::string& fileName);
-    void ADD(std::string lineArr[], uint32_t* output);
-    void AND(std::string lineArr[], uint32_t* output);
-    void ASR(std::string lineArr[], uint32_t* output);
-    void LSR(std::string lineArr[], uint32_t* output);
-    void LSL(std::string lineArr[], uint32_t* output);
-    void NOT(std::string lineArr[], uint32_t* output);
-    void ORR(std::string lineArr[], uint32_t* output);
-    void SUB(std::string lineArr[], uint32_t* output);
-    void XOR(std::string lineArr[], uint32_t* output);
-};
-
-void Simulator::run(const std::string& fileName) {
+int main() {
     std::cout << std::hex << std::showbase;
 
     std::string line;
     uint32_t output;
     int flagN, flagZ;
-    std::ifstream File(fileName);
+    std::ifstream File("Programming-Project-2.txt");
 
     while (getline (File, line)) {
         std::string lineArr[3];
@@ -34,24 +20,30 @@ void Simulator::run(const std::string& fileName) {
             ++i;
         }
 
+        uint32_t first = std::stoul(lineArr[1], nullptr, 16);
+        uint32_t second = 0;
+        try {
+            second = std::stoul(lineArr[2], nullptr, 16);
+        } catch (...) {}
+
         if (lineArr[0] == "ADD" || lineArr[0] == "ADDS") {
-            Simulator::ADD(lineArr, &output);
+            output = first + second;
         } else if(lineArr[0] == "AND" || lineArr[0] == "ANDS") {
-            Simulator::AND(lineArr, &output);
+            output = first & second;
         } else if(lineArr[0] == "ASR" || lineArr[0] == "ASRS") {
-            Simulator::ASR(lineArr, &output);
+            output = (int)first >> 1;
         } else if(lineArr[0] == "LSR" || lineArr[0] == "LSRS") {
-            Simulator::LSR(lineArr, &output);
+            output = first >> 1;
         } else if(lineArr[0] == "LSL" || lineArr[0] == "LSLS") {
-            Simulator::LSL(lineArr, &output);
+            output = first << 1;
         } else if(lineArr[0] == "NOT" || lineArr[0] == "NOTS") {
-            Simulator::NOT(lineArr, &output);
+            output = ~first;
         } else if(lineArr[0] == "ORR" || lineArr[0] == "ORRS") {
-            Simulator::ORR(lineArr, &output);
+            output = first | second;
         } else if(lineArr[0] == "SUB" || lineArr[0] == "SUBS") {
-            Simulator::SUB(lineArr, &output);
+            output = first - second;
         } else if(lineArr[0] == "XOR" || lineArr[0] == "XORS") {
-            Simulator::XOR(lineArr, &output);
+            output = first ^ second;
         } else {
             continue;
         }
@@ -68,60 +60,5 @@ void Simulator::run(const std::string& fileName) {
     }
 
     File.close();
-}
-
-void Simulator::ADD(std::string lineArr[], uint32_t* output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    uint32_t second = std::stoul(lineArr[2], nullptr, 16);
-    *output = first + second;
-}
-
-void Simulator::AND(std::string lineArr[], uint32_t* output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    uint32_t second = std::stoul(lineArr[2], nullptr, 16);
-    *output = first & second;
-}
-
-void Simulator::ASR(std::string *lineArr, uint32_t *output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    *output = (int)first >> 1;
-}
-
-void Simulator::LSR(std::string *lineArr, uint32_t *output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    *output = first >> 1;
-}
-
-void Simulator::LSL(std::string *lineArr, uint32_t *output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    *output = first << 1;
-}
-
-void Simulator::NOT(std::string *lineArr, uint32_t *output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    *output = ~first;
-}
-
-void Simulator::ORR(std::string *lineArr, uint32_t *output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    uint32_t second = std::stoul(lineArr[2], nullptr, 16);
-    *output = first | second;
-}
-
-void Simulator::SUB(std::string *lineArr, uint32_t *output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    uint32_t second = std::stoul(lineArr[2], nullptr, 16);
-    *output = first - second;
-}
-
-void Simulator::XOR(std::string *lineArr, uint32_t *output) {
-    uint32_t first = std::stoul(lineArr[1], nullptr, 16);
-    uint32_t second = std::stoul(lineArr[2], nullptr, 16);
-    *output = first ^ second;
-}
-
-int main() {
-    Simulator simulator;
-    simulator.run("Programming-Project-2.txt");
     return 0;
 }
