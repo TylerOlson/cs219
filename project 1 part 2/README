@@ -4,7 +4,7 @@ This program has the following commands: ADD, AND, ASR, LSR, LSL, NOT, ORR, SUB,
 Supply an S after to save N and Z flags.
 
 The input file will be formatted: "CMD <number1> <number2>" both numbers being in hexadecimal format.
-You can choose to omit number2 in commands that require only one number.
+You can choose to omit <number2> in commands that require only one number.
 
 Instructions: Run `make` to build the binary.
 Run the program output executable in terminal.

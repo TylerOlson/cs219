@@ -54,10 +54,9 @@ int main() {
             flagZ = (output == 0);
         }
 
-
         std::cout << lineArr[0] << " " << lineArr[1] << " " << lineArr[2] << ": " << output << std::endl;
         std::cout << "N: " << flagN << " Z: " << flagZ << std::endl;
-        std::cout << std::endl << std::endl;
+        std::cout << std::endl;
     }
 
     File.close();
